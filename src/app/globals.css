@@ -751,3 +751,81 @@ button:focus-visible {
   padding: 0.45rem 0.8rem;
   cursor: pointer;
 }
+
+.member-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.member-card {
+  width: min(100%, 64rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.member-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.member-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.member-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.member-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+}
+
+.member-content h2 {
+  margin-bottom: 0.75rem;
+}
+
+.member-warning {
+  color: #ffcc90;
+}
+
+.member-form {
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 24rem);
+}
+
+.member-form input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 0.65rem 0.75rem;
+}
+
+.billing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.billing-grid article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
