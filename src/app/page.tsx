@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ContactForm } from '@/components/ContactForm';
+import { WaitlistForm } from '@/components/WaitlistForm';
 import { Gallery } from '@/components/Gallery';
 import {
   certifiedProgramPreview,
@@ -58,6 +59,7 @@ export default function HomePage() {
             <a href="#menu">Formula Menu</a>
             <a href="#method">Method</a>
             <a href="#selected-work">Gallery</a>
+            <a href="#waitlist">Waitlist</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
