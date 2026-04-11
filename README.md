@@ -1,21 +1,59 @@
-# Mkinnonpastery
+# Mkinnonpastery (Next.js)
 
-Static portfolio site and resume content for Mark McKinnon.
+Production-ready Next.js (App Router + TypeScript) web app for Mark McKinnon, built for Vercel.
 
-## Contents
+## Canonical app root
 
-- `index.html` – portfolio landing page and gallery.
-- `styles.css` – site styling.
-- `script.js` – image gallery rendering for files in `Mark/`.
-- `Mark/` – portfolio image assets.
-- `resume/` – resume and web-bio markdown content.
+This repository root is the deployable app root.
 
-## Run locally
+- App source: `src/`
+- Original source imagery: `Mkinnonpastery-main/Mkinnonpastery-main/public/assets/images/`
+- Legacy static site (non-deploy): `archive/legacy-site/`
+- Original design/content source snapshot: `Mkinnonpastery-main/Mkinnonpastery-main/public/`
 
-Open `index.html` directly in a browser, or serve the folder:
+Do **not** expose source archives in deployment outputs:
+
+- `Mkinnonpastery-main/Mkinnonpastery-main/content/`
+- `archive/`
+
+## Local development
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then visit `http://localhost:8000`.
+Open [http://localhost:3000](http://localhost:3000).
+
+## Production checks
+
+```bash
+npm run lint
+npm run build
+```
+
+## Image pipeline
+
+Generate responsive variants (avif/webp/jpeg):
+
+```bash
+npm run optimize:images
+```
+
+Generated files are written to `public/assets/images/optimized/` while reading source images from `Mkinnonpastery-main/Mkinnonpastery-main/public/assets/images/`.
+
+## Contact API setup
+
+Create `.env.local` from `.env.example` and set:
+
+- `RESEND_API_KEY`
+- `CONTACT_TO_EMAIL`
+- `CONTACT_FROM_EMAIL`
+
+## Deploy to Vercel
+
+1. Import this repository in Vercel.
+2. Framework preset: **Next.js**.
+3. Build command: `npm run build`.
+4. Output: handled automatically by Next.js.
+5. Add environment variables from `.env.example`.
