@@ -1,7 +1,18 @@
 import Image from 'next/image';
 import { ContactForm } from '@/components/ContactForm';
+import { WaitlistForm } from '@/components/WaitlistForm';
 import { Gallery } from '@/components/Gallery';
-import { galleryItems, hero, heroStats, menuItems } from '@/content/siteContent';
+import {
+  certifiedProgramPreview,
+  consistencyExamples,
+  galleryItems,
+  guestExperts,
+  hero,
+  heroStats,
+  memberOutcomes,
+  menuItems,
+  proofCta
+} from '@/content/siteContent';
 
 const memberOutcomes = [
   {
@@ -71,6 +82,7 @@ export default function HomePage() {
             <a href="#menu">Formula Menu</a>
             <a href="#method">Method</a>
             <a href="#selected-work">Gallery</a>
+            <a href="#waitlist">Waitlist</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -178,6 +190,96 @@ export default function HomePage() {
           <div className="container">
             <div className="section-intro"><p className="eyebrow">Gallery</p><h2>Additional bakery products from the working archive.</h2></div>
             <Gallery items={galleryItems} />
+          </div>
+        </section>
+
+        <section className="section section-contrast" id="member-outcomes">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Member Outcomes</p>
+              <h2>Testimonials focused on measurable production wins.</h2>
+            </div>
+            <div className="proof-grid">
+              {memberOutcomes.map((testimonial) => (
+                <article className="proof-card" key={testimonial.member}>
+                  <p className="proof-quote">&ldquo;{testimonial.quote}&rdquo;</p>
+                  <p className="proof-name">{testimonial.member}</p>
+                  <p className="proof-outcome">{testimonial.outcome}</p>
+                </article>
+              ))}
+            </div>
+            <div className="proof-cta">
+              <p>{proofCta.supportingText}</p>
+              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="consistency-examples">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Before / After Consistency</p>
+              <h2>Production examples showing how repeatability improves.</h2>
+            </div>
+            <div className="proof-grid">
+              {consistencyExamples.map((example) => (
+                <article className="proof-card" key={example.product}>
+                  <h3>{example.product}</h3>
+                  <dl className="proof-detail">
+                    <div><dt>Before</dt><dd>{example.before}</dd></div>
+                    <div><dt>After</dt><dd>{example.after}</dd></div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+            <div className="proof-cta">
+              <p>{proofCta.supportingText}</p>
+              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-alt" id="certified-preview">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Certification</p>
+              <h2>{certifiedProgramPreview.title}</h2>
+              <p className="section-copy">{certifiedProgramPreview.description}</p>
+            </div>
+            <div className="proof-grid">
+              {certifiedProgramPreview.points.map((point) => (
+                <article className="proof-card" key={point.title}>
+                  <h3>{point.title}</h3>
+                  <p>{point.detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="proof-cta">
+              <p>{proofCta.supportingText}</p>
+              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-contrast" id="guest-experts">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Guest Expert Strip</p>
+              <h2>Credibility from specialist contributors behind the training standard.</h2>
+            </div>
+            <div className="credibility-strip">
+              {guestExperts.map((expert) => (
+                <article className="expert-chip" key={expert.name}>
+                  <p className="proof-name">{expert.name}</p>
+                  <p className="expert-role">{expert.role}</p>
+                  <p>{expert.contribution}</p>
+                </article>
+              ))}
+            </div>
+            <div className="proof-cta">
+              <p>{proofCta.supportingText}</p>
+              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+            </div>
           </div>
         </section>
 
