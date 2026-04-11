@@ -1,74 +1,29 @@
 import Image from 'next/image';
 import { ContactForm } from '@/components/ContactForm';
-import { WaitlistForm } from '@/components/WaitlistForm';
 import { Gallery } from '@/components/Gallery';
+import { WaitlistForm } from '@/components/WaitlistForm';
 import {
+  accessPlans,
+  audienceSignals,
   certifiedProgramPreview,
   consistencyExamples,
+  consultingOffers,
   galleryItems,
   guestExperts,
   hero,
   heroStats,
-  memberOutcomes,
+  launchRoadmap,
+  membershipFeatures,
   menuItems,
-  proofCta
+  memberOutcomes,
+  methodSteps,
+  positioning,
+  positioningPanels,
+  proofCta,
+  siteNavigation,
+  strategicPillars,
+  waitlistBenefits
 } from '@/content/siteContent';
-
-const memberOutcomes = [
-  {
-    title: 'Repeatable formulas',
-    detail: 'Build products with formulas and methods your team can execute consistently.',
-    href: '#menu'
-  },
-  {
-    title: 'Costing templates',
-    detail: 'Use practical costing and production guardrails to protect margins as you scale.',
-    href: '#method'
-  },
-  {
-    title: 'Live Q&A',
-    detail: 'Get direct answers on production blockers and technique questions.',
-    href: '#contact'
-  },
-  {
-    title: 'Peer feedback',
-    detail: 'Review member bakes, troubleshoot issues, and improve faster together.',
-    href: '#selected-work'
-  }
-];
-
-const methodSteps = [
-  {
-    step: 'Step 01',
-    title: 'Build strong bases first',
-    place: 'Doughs, batters, shells, and cheesecake mixes',
-    points: [
-      'Lamination, choux paste, short crusts, and sponge or muffin batters need correct mix development before any finishing happens.',
-      'Scaling, resting, and tray setup decide whether the product can be repeated across a full bakery run.',
-      'If the base is weak, no garnish or glaze can recover the final result.'
-    ]
-  },
-  {
-    step: 'Step 02',
-    title: 'Balance fillings and set',
-    place: 'Frangipane, creams, curds, glaze, and baked centres',
-    points: [
-      'Fillings must deliver flavour, hold shape, and sit cleanly inside the product or cabinet display.',
-      'Moisture control matters as much as flavour because the wrong balance shortens holding time.',
-      'Consistent fill weights make the product eat the same from the first tray to the last.'
-    ]
-  },
-  {
-    step: 'Step 03',
-    title: 'Finish for display and repeatability',
-    place: 'Colour, garnish placement, sugar, glaze, and slicing',
-    points: [
-      'The final appearance is part of the product specification, not an afterthought.',
-      'Good production notes make the finish achievable by the whole bakery team, not only one baker.',
-      'The best products look strong early in the morning and still eat well later in the day.'
-    ]
-  }
-];
 
 export default function HomePage() {
   return (
@@ -76,36 +31,40 @@ export default function HomePage() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header" id="top">
         <div className="container header-inner">
-          <a className="site-mark" href="#top">Mark McKinnon</a>
+          <div className="header-brand">
+            <a className="site-mark" href="#top">Mark McKinnon</a>
+            <p className="site-submark">The McKinnon Collective</p>
+          </div>
           <nav className="site-nav" aria-label="Primary">
-            <a href="#about">About</a>
-            <a href="#menu">Formula Menu</a>
-            <a href="#method">Method</a>
-            <a href="#selected-work">Gallery</a>
-            <a href="#waitlist">Waitlist</a>
-            <a href="#contact">Contact</a>
+            {siteNavigation.map((item) => (
+              <a key={item.href} href={item.href}>{item.label}</a>
+            ))}
           </nav>
+          <div className="header-actions">
+            <a className="button button-secondary header-button" href="/login">Member sign in</a>
+          </div>
         </div>
       </header>
+
       <main id="main">
         <section className="hero section">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow">Bakery Formula Menu | Tested Pastry Methods | Victoria, Australia</p>
-              <h1>Membership for bakers and pastry teams who want repeatable products and stronger margins.</h1>
-              <p className="lead">Inside the membership, you get practical formulas, costing tools, and live coaching that help you move from one-off bakes to consistent, profitable production.</p>
-              <p className="lead-small">Join the waitlist below to get member updates and early access when doors open.</p>
-              <div className="hero-highlights" aria-label="Bakery menu highlights">
+              <p className="eyebrow">{hero.eyebrow}</p>
+              <h1>{hero.title}</h1>
+              <p className="lead">{hero.description}</p>
+              <p className="lead-small">{hero.supportingText}</p>
+              <div className="hero-highlights" aria-label="McKinnon membership highlights">
                 {heroStats.map((stat) => (
-                  <article key={stat.value} className="stat-card">
+                  <article key={stat.label} className="stat-card">
                     <span className="stat-value">{stat.value}</span>
                     <span className="stat-label">{stat.label}</span>
                   </article>
                 ))}
               </div>
               <div className="hero-actions">
-                <a className="button button-primary" href="#contact">Join waitlist</a>
-                <a className="button button-secondary" href="#menu">Preview free lesson</a>
+                <a className="button button-primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+                <a className="button button-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
               </div>
             </div>
             <figure className="hero-media">
@@ -115,20 +74,18 @@ export default function HomePage() {
                 priority
                 sizes="(max-width: 768px) 100vw, 45vw"
               />
-              <figcaption>Commercial bakery work focused on products that can be repeated with confidence.</figcaption>
+              <figcaption>The public site teaches the philosophy. The membership delivers the repeatable bakery system.</figcaption>
             </figure>
           </div>
         </section>
 
-
-
-        <section className="section value-strip" aria-label="Membership outcomes">
+        <section className="section value-strip" aria-label="Who the collective serves">
           <div className="container">
             <div className="value-strip-grid">
-              {memberOutcomes.map((outcome) => (
-                <a key={outcome.title} className="stat-card value-strip-item" href={outcome.href}>
-                  <h3>{outcome.title}</h3>
-                  <p>{outcome.detail}</p>
+              {audienceSignals.map((signal) => (
+                <a key={signal.title} className="stat-card value-strip-item" href={signal.href}>
+                  <h3>{signal.title}</h3>
+                  <p>{signal.detail}</p>
                   <span>Explore section</span>
                 </a>
               ))}
@@ -139,17 +96,68 @@ export default function HomePage() {
         <section className="section section-alt" id="about">
           <div className="container">
             <div className="section-intro">
-              <p className="eyebrow">About The Range</p>
-              <h2>These bakery items are presented as a make-it menu, not a buy-it list.</h2>
+              <p className="eyebrow">{positioning.eyebrow}</p>
+              <h2>{positioning.title}</h2>
+            </div>
+            <div className="split-layout">
+              <div className="prose">
+                {positioning.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="credential-stack">
+                {positioningPanels.map((panel) => (
+                  <article key={panel.title} className="info-panel">
+                    <h3>{panel.title}</h3>
+                    <ul className="detail-list">
+                      {panel.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <div className="specialty-grid section-grid-top">
+              {strategicPillars.map((pillar) => (
+                <article key={pillar.title} className="specialty-card">
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.detail}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="section section-contrast" id="menu">
+        <section className="section section-contrast" id="membership">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Membership Experience</p>
+              <h2>A serious bakery membership should improve the bench, the cabinet, and the business.</h2>
+              <p className="section-copy">The offer is built around operating clarity: what to make, how to make it, how to hold it, and how to keep the numbers healthy.</p>
+            </div>
+            <div className="proof-grid">
+              {membershipFeatures.map((feature) => (
+                <article className="proof-card" key={feature.title}>
+                  <p className="plan-label">{feature.cadence}</p>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="proof-cta">
+              <p>{proofCta.supportingText}</p>
+              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="menu">
           <div className="container">
             <div className="section-intro">
               <p className="eyebrow">Formula Menu</p>
-              <h2>Signature bakery items broken down by how to make them well.</h2>
+              <h2>Signature products are still the proof. The difference is that each one now feeds a bigger learning system.</h2>
+              <p className="section-copy">Public visitors can see how the range is approached. Members get the production detail underneath each product family.</p>
             </div>
             <div className="menu-grid">
               {menuItems.map((formula) => (
@@ -199,7 +207,7 @@ export default function HomePage() {
                       <ul>
                         {formula.membersOnly.processTimeline.map((step) => (
                           <li key={step.stage}>
-                            <strong>{step.stage}</strong> ({step.timing}) — {step.target}
+                            <strong>{step.stage}</strong> ({step.timing}) - {step.target}
                           </li>
                         ))}
                       </ul>
@@ -242,34 +250,46 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="method">
+        <section className="section section-alt" id="method">
           <div className="container">
-            <div className="section-intro"><p className="eyebrow">Method</p><h2>How the bakery range is built for repeatable production.</h2></div>
+            <div className="section-intro">
+              <p className="eyebrow">Method</p>
+              <h2>The McKinnon method still leads with repeatability, because every premium membership promise falls apart without it.</h2>
+            </div>
             <div className="timeline">
               {methodSteps.map((step) => (
                 <article className="timeline-item" key={step.step}>
                   <div className="timeline-meta">
-                    <p className="timeline-date">{step.step}</p><h3>{step.title}</h3><p className="timeline-place">{step.place}</p>
+                    <p className="timeline-date">{step.step}</p>
+                    <h3>{step.title}</h3>
+                    <p className="timeline-place">{step.place}</p>
                   </div>
-                  <ul className="timeline-points">{step.points.map((point) => <li key={point}>{point}</li>)}</ul>
+                  <ul className="timeline-points">
+                    {step.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section section-alt" id="selected-work">
+        <section className="section" id="selected-work">
           <div className="container">
-            <div className="section-intro"><p className="eyebrow">Gallery</p><h2>Additional bakery products from the working archive.</h2></div>
+            <div className="section-intro">
+              <p className="eyebrow">Working Archive</p>
+              <h2>Visual proof still matters. It just sits behind a stronger narrative now.</h2>
+            </div>
             <Gallery items={galleryItems} />
           </div>
         </section>
 
-        <section className="section section-contrast" id="member-outcomes">
+        <section className="section section-contrast" id="results">
           <div className="container">
             <div className="section-intro">
               <p className="eyebrow">Member Outcomes</p>
-              <h2>Testimonials focused on measurable production wins.</h2>
+              <h2>The best proof is measurable production improvement, not generic praise.</h2>
             </div>
             <div className="proof-grid">
               {memberOutcomes.map((testimonial) => (
@@ -280,20 +300,7 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
-            <div className="proof-cta">
-              <p>{proofCta.supportingText}</p>
-              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section" id="consistency-examples">
-          <div className="container">
-            <div className="section-intro">
-              <p className="eyebrow">Before / After Consistency</p>
-              <h2>Production examples showing how repeatability improves.</h2>
-            </div>
-            <div className="proof-grid">
+            <div className="proof-grid section-grid-top">
               {consistencyExamples.map((example) => (
                 <article className="proof-card" key={example.product}>
                   <h3>{example.product}</h3>
@@ -311,7 +318,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section section-alt" id="certified-preview">
+        <section className="section section-alt" id="certification">
           <div className="container">
             <div className="section-intro">
               <p className="eyebrow">Certification</p>
@@ -326,20 +333,7 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
-            <div className="proof-cta">
-              <p>{proofCta.supportingText}</p>
-              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section section-contrast" id="guest-experts">
-          <div className="container">
-            <div className="section-intro">
-              <p className="eyebrow">Guest Expert Strip</p>
-              <h2>Credibility from specialist contributors behind the training standard.</h2>
-            </div>
-            <div className="credibility-strip">
+            <div className="credibility-strip section-grid-top">
               {guestExperts.map((expert) => (
                 <article className="expert-chip" key={expert.name}>
                   <p className="proof-name">{expert.name}</p>
@@ -348,37 +342,113 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
-            <div className="proof-cta">
-              <p>{proofCta.supportingText}</p>
-              <a className="button button-primary" href={proofCta.href}>{proofCta.label}</a>
+          </div>
+        </section>
+
+        <section className="section" id="roadmap">
+          <div className="container">
+            <div className="section-intro">
+              <p className="eyebrow">Natural Next Steps</p>
+              <h2>The site now leads naturally into the launch plan instead of leaving the strategy trapped in a document.</h2>
+            </div>
+            <div className="proof-grid">
+              {launchRoadmap.map((stage) => (
+                <article className="proof-card" key={stage.phase}>
+                  <p className="plan-label">{stage.phase}</p>
+                  <h3>{stage.title}</h3>
+                  <p>{stage.detail}</p>
+                  <ul className="detail-list">
+                    {stage.actions.map((action) => (
+                      <li key={action}>{action}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+            <div className="proof-grid section-grid-top">
+              {accessPlans.map((plan) => (
+                <article className={plan.highlighted ? 'proof-card plan-card plan-card-highlight' : 'proof-card plan-card'} key={plan.title}>
+                  <p className="plan-label">{plan.label}</p>
+                  <h3>{plan.title}</h3>
+                  <p className="plan-cadence">{plan.cadence}</p>
+                  <p>{plan.detail}</p>
+                  <ul className="detail-list">
+                    {plan.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                  <a className="button button-secondary" href={plan.href}>Enquire</a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-contrast" id="waitlist">
+          <div className="container waitlist-shell">
+            <div className="section-intro">
+              <p className="eyebrow">Founding Waitlist</p>
+              <h2>Build demand before launch, qualify the right bakers, and reward early attention properly.</h2>
+              <p className="section-copy">The waitlist is not just a signup form. It becomes the first research and trust-building layer of the business.</p>
+            </div>
+            <div className="contact-grid">
+              <div className="contact-copy">
+                <article className="info-panel">
+                  <h3>What waitlist members should expect</h3>
+                  <ul className="detail-list check-list">
+                    {waitlistBenefits.map((benefit) => (
+                      <li key={benefit}>{benefit}</li>
+                    ))}
+                  </ul>
+                </article>
+              </div>
+              <div className="contact-panel">
+                <WaitlistForm />
+              </div>
             </div>
           </div>
         </section>
 
         <section className="section contact-section" id="contact">
-          <div className="container contact-grid">
-            <div className="contact-copy">
+          <div className="container">
+            <div className="section-intro">
               <p className="eyebrow">Contact</p>
-              <h2>Recipe development and bakery production enquiries welcome.</h2>
-              <p className="lead-small">Mark is available to discuss pastry production, subcontract bakery work, recipe refinement, and repeatable menu lines.</p>
-              <div className="contact-actions">
-                <a className="button button-primary" href="tel:+61421960632">Call Mark</a>
-                <a className="button button-secondary" href="sms:+61421960632">Send SMS</a>
-              </div>
-              <ContactForm />
+              <h2>Use the direct enquiry path for consultancy, team training, partnerships, or certification interest.</h2>
+              <p className="section-copy">Membership drives recurring value. Contact enquiries handle higher-touch work around bakery systems, subcontracting, and collaborations.</p>
             </div>
-            <div className="contact-panel">
-              <dl className="contact-list">
-                <div><dt>Phone</dt><dd><a href="tel:+61421960632">0421 960 632</a></dd></div>
-                <div><dt>Location</dt><dd>Victoria, Australia</dd></div>
-                <div><dt>Focus</dt><dd>Recipe development, commercial pastry production, bakery-ready product builds</dd></div>
-              </dl>
+            <div className="contact-grid">
+              <div className="contact-copy">
+                <div className="contact-actions">
+                  <a className="button button-primary" href="tel:+61421960632">Call Mark</a>
+                  <a className="button button-secondary" href="sms:+61421960632">Send SMS</a>
+                </div>
+                <ContactForm />
+              </div>
+              <div className="credential-stack">
+                {consultingOffers.map((offer) => (
+                  <article className="info-panel" key={offer.title}>
+                    <h3>{offer.title}</h3>
+                    <p>{offer.detail}</p>
+                  </article>
+                ))}
+                <div className="contact-panel">
+                  <dl className="contact-list">
+                    <div><dt>Phone</dt><dd><a href="tel:+61421960632">0421 960 632</a></dd></div>
+                    <div><dt>Location</dt><dd>Victoria, Australia</dd></div>
+                    <div><dt>Focus</dt><dd>Membership launch, bakery systems, consultancy, certification, and training partnerships</dd></div>
+                  </dl>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </main>
+
       <footer className="site-footer">
-        <div className="container footer-inner"><p>Mark McKinnon</p><p>Bakery formula menu | Victoria, Australia</p></div>
+        <div className="container footer-inner">
+          <p>Mark McKinnon</p>
+          <p>The McKinnon Collective | Bakery membership, certification, and consultancy</p>
+        </div>
       </footer>
     </>
   );

@@ -6,7 +6,7 @@ const links = [
   { href: '/formula-library', label: 'Formula Library' },
   { href: '/live-sessions', label: 'Live Sessions' },
   { href: '/community-links', label: 'Community Links' },
-  { href: '/settings', label: 'Account & Billing' },
+  { href: '/settings', label: 'Account & Billing' }
 ];
 
 export default async function MembersLayout({ children }: { children: React.ReactNode }) {
@@ -17,7 +17,8 @@ export default async function MembersLayout({ children }: { children: React.Reac
       <div className="member-card member-layout">
         <header>
           <p className="member-eyebrow">Member Area</p>
-          <h1>Bakery Collective</h1>
+          <h1>McKinnon Collective</h1>
+          <p className="lead-small">Protected preview of the formulas, tools, coaching, and partner standards behind the public site.</p>
         </header>
         <nav className="member-nav" aria-label="Member routes">
           {links.map((link) => (

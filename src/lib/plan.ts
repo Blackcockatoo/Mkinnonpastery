@@ -1,5 +1,5 @@
 export type BillingCycle = 'monthly' | 'annual';
-export type PlanTier = 'starter' | 'pro' | 'enterprise';
+export type PlanTier = 'collective' | 'team' | 'certified';
 
 export type PlanMetadata = {
   tier: PlanTier;
@@ -10,13 +10,13 @@ export type PlanMetadata = {
 };
 
 const PLAN_DEFAULTS: Record<PlanTier, Omit<PlanMetadata, 'tier' | 'cycle'>> = {
-  starter: { seats: 1, supportLevel: 'standard', trialEndsAt: undefined },
-  pro: { seats: 5, supportLevel: 'priority', trialEndsAt: undefined },
-  enterprise: { seats: 25, supportLevel: 'dedicated', trialEndsAt: undefined },
+  collective: { seats: 1, supportLevel: 'standard', trialEndsAt: undefined },
+  team: { seats: 5, supportLevel: 'priority', trialEndsAt: undefined },
+  certified: { seats: 12, supportLevel: 'dedicated', trialEndsAt: undefined }
 };
 
 export function getPlanMetadata(options?: Partial<PlanMetadata>): PlanMetadata {
-  const tier = options?.tier ?? 'starter';
+  const tier = options?.tier ?? 'collective';
   const cycle = options?.cycle ?? 'monthly';
   const defaults = PLAN_DEFAULTS[tier];
 
@@ -30,7 +30,7 @@ export function getPlanMetadata(options?: Partial<PlanMetadata>): PlanMetadata {
 }
 
 export function getUpgradeablePlans(fromTier: PlanTier) {
-  const order: PlanTier[] = ['starter', 'pro', 'enterprise'];
+  const order: PlanTier[] = ['collective', 'team', 'certified'];
   const currentIndex = order.indexOf(fromTier);
   return order.slice(Math.max(currentIndex + 1, 0));
 }

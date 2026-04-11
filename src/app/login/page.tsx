@@ -38,7 +38,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <section className="member-card">
         <p className="member-eyebrow">Members</p>
         <h1>Sign in</h1>
-        <p>Use your member access code to unlock the dashboard and protected pages.</p>
+        <p>Use your member access code to unlock the McKinnon Collective dashboard, protected formula previews, and the member workspace.</p>
         {error ? <p className="member-warning">Invalid access code. Please try again.</p> : null}
         <form action={login} className="member-form">
           <label htmlFor="secret">Access code</label>
