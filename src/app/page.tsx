@@ -100,17 +100,89 @@ export default function HomePage() {
               <h2>Signature bakery items broken down by how to make them well.</h2>
             </div>
             <div className="menu-grid">
-              {menuItems.map((item) => (
-                <article key={item.title} className="menu-card">
-                  <Image src={item.image} alt={item.alt} sizes="(max-width: 768px) 100vw, 33vw" />
+              {menuItems.map((formula) => (
+                <article key={formula.publicPreview.title} className="menu-card">
+                  <Image
+                    src={formula.publicPreview.image}
+                    alt={formula.publicPreview.alt}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                   <div className="menu-card-body">
-                    <p className="menu-tag">{item.tag}</p>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <dl className="menu-meta">
-                      <div><dt>How to make it</dt><dd>{item.howTo}</dd></div>
-                      <div><dt>What to watch</dt><dd>{item.watch}</dd></div>
-                    </dl>
+                    <p className="menu-tag">{formula.publicPreview.tag}</p>
+                    <h3>{formula.publicPreview.title}</h3>
+                    <p>{formula.publicPreview.description}</p>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} preview notes`}>
+                      <h4>Public Preview</h4>
+                      <p className="formula-outcome">{formula.publicPreview.outcome}</p>
+                      <ul>
+                        {formula.publicPreview.previewNotes.map((note) => (
+                          <li key={note}>{note}</li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} production specs`}>
+                      <h4>Members Production Notes</h4>
+                      <dl className="formula-stat-grid">
+                        <div><dt>Batch size</dt><dd>{formula.membersOnly.batchSize}</dd></div>
+                        <div><dt>Yield</dt><dd>{formula.membersOnly.yield}</dd></div>
+                      </dl>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} ingredient percentages`}>
+                      <h4>Ingredient Percentages</h4>
+                      <ul>
+                        {formula.membersOnly.ingredientPercentages.map((ingredient) => (
+                          <li key={ingredient.ingredient}>
+                            <strong>{ingredient.ingredient}:</strong> {ingredient.percentage}
+                            {ingredient.note ? ` (${ingredient.note})` : ''}
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} process timeline`}>
+                      <h4>Process Timeline</h4>
+                      <ul>
+                        {formula.membersOnly.processTimeline.map((step) => (
+                          <li key={step.stage}>
+                            <strong>{step.stage}</strong> ({step.timing}) — {step.target}
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} hold and shelf notes`}>
+                      <h4>Hold / Shelf Notes</h4>
+                      <ul>
+                        {formula.membersOnly.holdShelfNotes.map((note) => (
+                          <li key={note}>{note}</li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} costing inputs`}>
+                      <h4>Costing Inputs</h4>
+                      <ul>
+                        {formula.membersOnly.costingInputs.map((entry) => (
+                          <li key={entry.label}>
+                            <strong>{entry.label}:</strong> {entry.amount}
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+
+                    <section className="formula-block" aria-label={`${formula.publicPreview.title} troubleshooting`}>
+                      <h4>Troubleshooting</h4>
+                      <ul>
+                        {formula.membersOnly.troubleshooting.map((issue) => (
+                          <li key={issue.symptom}>
+                            <strong>{issue.symptom}:</strong> {issue.fix}
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
                   </div>
                 </article>
               ))}

@@ -521,6 +521,59 @@ h3 {
   font-size: 0.98rem;
 }
 
+.formula-block {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(245, 229, 205, 0.08);
+}
+
+.formula-block h4 {
+  margin: 0;
+  color: var(--surface);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.formula-outcome {
+  margin: 0.45rem 0 0;
+  color: var(--surface);
+  font-weight: 600;
+}
+
+.formula-block ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.formula-block li + li {
+  margin-top: 0.45rem;
+}
+
+.formula-stat-grid {
+  margin: 0.6rem 0 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.formula-stat-grid div {
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(255, 248, 239, 0.04);
+}
+
+.formula-stat-grid dt {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.formula-stat-grid dd {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
