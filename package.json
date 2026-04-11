@@ -10,7 +10,7 @@
     "optimize:images": "tsx scripts/optimize-images.ts"
   },
   "dependencies": {
-    "next": "15.3.1",
+    "next": "15.3.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "resend": "4.3.0",
@@ -21,7 +21,7 @@
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "eslint": "9.25.1",
-    "eslint-config-next": "15.3.1",
+    "eslint-config-next": "15.3.6",
     "sharp": "0.33.5",
     "tsx": "4.19.3",
     "typescript": "5.8.3"
