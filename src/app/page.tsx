@@ -14,6 +14,29 @@ import {
   proofCta
 } from '@/content/siteContent';
 
+const memberOutcomes = [
+  {
+    title: 'Repeatable formulas',
+    detail: 'Build products with formulas and methods your team can execute consistently.',
+    href: '#menu'
+  },
+  {
+    title: 'Costing templates',
+    detail: 'Use practical costing and production guardrails to protect margins as you scale.',
+    href: '#method'
+  },
+  {
+    title: 'Live Q&A',
+    detail: 'Get direct answers on production blockers and technique questions.',
+    href: '#contact'
+  },
+  {
+    title: 'Peer feedback',
+    detail: 'Review member bakes, troubleshoot issues, and improve faster together.',
+    href: '#selected-work'
+  }
+];
+
 const methodSteps = [
   {
     step: 'Step 01',
@@ -69,8 +92,9 @@ export default function HomePage() {
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">Bakery Formula Menu | Tested Pastry Methods | Victoria, Australia</p>
-              <h1>A bakery menu that shows how the products are made.</h1>
-              <p className="lead">Instead of listing finished items for purchase, this page turns Mark McKinnon&apos;s bakery range into a working menu of tried-and-tested products.</p>
+              <h1>Membership for bakers and pastry teams who want repeatable products and stronger margins.</h1>
+              <p className="lead">Inside the membership, you get practical formulas, costing tools, and live coaching that help you move from one-off bakes to consistent, profitable production.</p>
+              <p className="lead-small">Join the waitlist below to get member updates and early access when doors open.</p>
               <div className="hero-highlights" aria-label="Bakery menu highlights">
                 {heroStats.map((stat) => (
                   <article key={stat.value} className="stat-card">
@@ -80,8 +104,8 @@ export default function HomePage() {
                 ))}
               </div>
               <div className="hero-actions">
-                <a className="button button-primary" href="#menu">View formula menu</a>
-                <a className="button button-secondary" href="#contact">Discuss recipe development</a>
+                <a className="button button-primary" href="#contact">Join waitlist</a>
+                <a className="button button-secondary" href="#menu">Preview free lesson</a>
               </div>
             </div>
             <figure className="hero-media">
@@ -93,6 +117,22 @@ export default function HomePage() {
               />
               <figcaption>Commercial bakery work focused on products that can be repeated with confidence.</figcaption>
             </figure>
+          </div>
+        </section>
+
+
+
+        <section className="section value-strip" aria-label="Membership outcomes">
+          <div className="container">
+            <div className="value-strip-grid">
+              {memberOutcomes.map((outcome) => (
+                <a key={outcome.title} className="stat-card value-strip-item" href={outcome.href}>
+                  <h3>{outcome.title}</h3>
+                  <p>{outcome.detail}</p>
+                  <span>Explore section</span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
