@@ -751,3 +751,51 @@ button:focus-visible {
   padding: 0.45rem 0.8rem;
   cursor: pointer;
 }
+
+.waitlist-section {
+  padding-top: 5rem;
+}
+
+.waitlist-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem 2rem;
+  align-items: start;
+}
+
+.waitlist-copy {
+  max-width: 42rem;
+}
+
+.waitlist-form {
+  margin-top: 0;
+}
+
+.waitlist-form select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 248, 239, 0.05);
+  color: var(--text);
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+}
+
+.consent-check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: start;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.consent-check input {
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 980px) {
+  .waitlist-shell {
+    grid-template-columns: 1fr;
+  }
+}

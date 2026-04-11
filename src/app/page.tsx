@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ContactForm } from '@/components/ContactForm';
+import { WaitlistForm } from '@/components/WaitlistForm';
 import { Gallery } from '@/components/Gallery';
 import { galleryItems, hero, heroStats, menuItems } from '@/content/siteContent';
 
@@ -48,6 +49,7 @@ export default function HomePage() {
             <a href="#menu">Formula Menu</a>
             <a href="#method">Method</a>
             <a href="#selected-work">Gallery</a>
+            <a href="#waitlist">Waitlist</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -138,6 +140,23 @@ export default function HomePage() {
           <div className="container">
             <div className="section-intro"><p className="eyebrow">Gallery</p><h2>Additional bakery products from the working archive.</h2></div>
             <Gallery items={galleryItems} />
+          </div>
+        </section>
+
+
+        <section className="section section-contrast waitlist-section" id="waitlist">
+          <div className="container">
+            <div className="waitlist-shell">
+              <div className="waitlist-copy">
+                <p className="eyebrow">Launch Waitlist</p>
+                <h2>Join the early-access weekend for Mark&apos;s bakery launch planning system.</h2>
+                <p className="lead-small">Get first access to the next implementation weekend, plus monthly updates with production planning notes, menu testing prompts, and rollout checklists for bakery teams.</p>
+                <p className="section-copy">This waitlist is for bakers and operators preparing launches or menu expansions and wanting practical implementation guidance.</p>
+              </div>
+              <div className="contact-panel">
+                <WaitlistForm />
+              </div>
+            </div>
           </div>
         </section>
 
