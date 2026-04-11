@@ -521,6 +521,97 @@ h3 {
   font-size: 0.98rem;
 }
 
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.proof-card {
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 239, 0.045);
+}
+
+.proof-card h3 {
+  margin-bottom: 0.7rem;
+}
+
+.proof-quote {
+  margin: 0;
+  font-size: 1.07rem;
+  color: var(--surface);
+}
+
+.proof-name {
+  margin: 0.9rem 0 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-outcome,
+.proof-card p:not(.proof-quote):not(.proof-name),
+.proof-detail dd,
+.expert-role {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+}
+
+.proof-detail {
+  margin: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.proof-detail div {
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(245, 229, 205, 0.08);
+}
+
+.proof-detail dt {
+  color: var(--surface);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.proof-detail dd {
+  font-size: 0.98rem;
+}
+
+.proof-cta {
+  margin-top: 1.4rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 248, 239, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.proof-cta p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.credibility-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.expert-chip {
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 239, 0.045);
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -619,7 +710,9 @@ button:focus-visible {
   .credentials-grid,
   .contact-grid,
   .specialty-grid,
-  .menu-grid {
+  .menu-grid,
+  .proof-grid,
+  .credibility-strip {
     grid-template-columns: 1fr;
   }
 
@@ -661,6 +754,11 @@ button:focus-visible {
 
   .button {
     width: 100%;
+  }
+
+  .proof-cta {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .footer-inner {
@@ -752,50 +850,80 @@ button:focus-visible {
   cursor: pointer;
 }
 
-.waitlist-section {
-  padding-top: 5rem;
-}
-
-.waitlist-shell {
+.member-shell {
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 1.5rem 2rem;
-  align-items: start;
+  place-items: center;
+  padding: 2rem;
 }
 
-.waitlist-copy {
-  max-width: 42rem;
-}
-
-.waitlist-form {
-  margin-top: 0;
-}
-
-.waitlist-form select {
-  width: 100%;
+.member-card {
+  width: min(100%, 64rem);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255, 248, 239, 0.05);
-  color: var(--text);
-  padding: 0.75rem 0.9rem;
-  font: inherit;
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 2rem;
 }
 
-.consent-check {
+.member-layout {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  align-items: start;
-  color: var(--muted);
-  font-size: 0.95rem;
+  gap: 1.5rem;
 }
 
-.consent-check input {
-  margin-top: 0.2rem;
+.member-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-@media (max-width: 980px) {
-  .waitlist-shell {
-    grid-template-columns: 1fr;
-  }
+.member-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.member-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+}
+
+.member-content h2 {
+  margin-bottom: 0.75rem;
+}
+
+.member-warning {
+  color: #ffcc90;
+}
+
+.member-form {
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 24rem);
+}
+
+.member-form input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 0.65rem 0.75rem;
+}
+
+.billing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.billing-grid article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
 }
