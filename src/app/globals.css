@@ -521,6 +521,97 @@ h3 {
   font-size: 0.98rem;
 }
 
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.proof-card {
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 239, 0.045);
+}
+
+.proof-card h3 {
+  margin-bottom: 0.7rem;
+}
+
+.proof-quote {
+  margin: 0;
+  font-size: 1.07rem;
+  color: var(--surface);
+}
+
+.proof-name {
+  margin: 0.9rem 0 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-outcome,
+.proof-card p:not(.proof-quote):not(.proof-name),
+.proof-detail dd,
+.expert-role {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+}
+
+.proof-detail {
+  margin: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.proof-detail div {
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(245, 229, 205, 0.08);
+}
+
+.proof-detail dt {
+  color: var(--surface);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.proof-detail dd {
+  font-size: 0.98rem;
+}
+
+.proof-cta {
+  margin-top: 1.4rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 248, 239, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.proof-cta p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.credibility-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.expert-chip {
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 239, 0.045);
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -619,7 +710,9 @@ button:focus-visible {
   .credentials-grid,
   .contact-grid,
   .specialty-grid,
-  .menu-grid {
+  .menu-grid,
+  .proof-grid,
+  .credibility-strip {
     grid-template-columns: 1fr;
   }
 
@@ -661,6 +754,11 @@ button:focus-visible {
 
   .button {
     width: 100%;
+  }
+
+  .proof-cta {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .footer-inner {
