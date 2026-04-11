@@ -28,6 +28,29 @@ export type GalleryItem = {
   featured?: boolean;
 };
 
+export type Testimonial = {
+  quote: string;
+  member: string;
+  outcome: string;
+};
+
+export type ConsistencyExample = {
+  product: string;
+  before: string;
+  after: string;
+};
+
+export type CertifiedPreviewPoint = {
+  title: string;
+  detail: string;
+};
+
+export type ExpertCredibility = {
+  name: string;
+  role: string;
+  contribution: string;
+};
+
 export const hero = {
   image: heroImage,
   alt: 'Fresh baked almond croissants finished with flaked almonds and icing sugar.'
@@ -123,5 +146,85 @@ export const galleryItems: GalleryItem[] = [
     description: 'Even shell work, level fill, and a finish suited to bakery-scale repetition.',
     image: lemonTarts,
     alt: 'Tray of lemon tarts with level citrus filling.'
+  }
+];
+
+export const proofCta = {
+  label: 'Join the waitlist for member access',
+  href: '#contact',
+  supportingText: 'Get early updates on training drops, certification spots, and new production playbooks.'
+} as const;
+
+export const memberOutcomes: Testimonial[] = [
+  {
+    quote: 'Our laminated line now holds shape and colour from first tray to final pickup.',
+    member: 'Head Baker, Melbourne Suburban Bakery',
+    outcome: 'Reduced remake batches by 32% over 6 weeks.'
+  },
+  {
+    quote: 'The fill-weight checks stopped random portion drift across our éclair and choux range.',
+    member: 'Production Lead, Boutique Pastry Team',
+    outcome: 'Lifted consistency score from 7.1 to 9.0 on weekly QA sheets.'
+  },
+  {
+    quote: 'Mark’s templates made handover simpler when weekend staff changed.',
+    member: 'Owner-Operator, Regional Café Bakery',
+    outcome: 'Cut training handover time from 3 shifts to 1 shift.'
+  }
+];
+
+export const consistencyExamples: ConsistencyExample[] = [
+  {
+    product: 'Almond Croissant',
+    before: 'Variable internal honeycomb and occasional under-colour in the final third of the bake run.',
+    after: 'Matched lamination fold sequence and finish colour standard across all production trays.'
+  },
+  {
+    product: 'Basque Cheesecake',
+    before: 'Uneven centre set causing soft collapse or over-baked slices at service.',
+    after: 'Defined bake-to-core window that preserves the dark top while holding a clean slice.'
+  },
+  {
+    product: 'Raspberry Éclair',
+    before: 'Inconsistent shell drying led to short display hold and uneven filling response.',
+    after: 'Standardized shell dry-back and fill timing for repeatable bench-to-cabinet stability.'
+  }
+];
+
+export const certifiedProgramPreview = {
+  title: '“McKinnon Certified” program preview',
+  description:
+    'A guided pathway for bakers and pastry teams who want proof-backed production standards they can train, audit, and repeat.',
+  points: [
+    {
+      title: 'Level checks by product family',
+      detail: 'Laminated, choux, and baked dessert lines each have practical pass benchmarks.'
+    },
+    {
+      title: 'Production scorecards',
+      detail: 'Members track colour, weight, set, and hold-time outcomes with one-page daily cards.'
+    },
+    {
+      title: 'Team readiness drills',
+      detail: 'Short bench simulations test whether methods remain stable under real service pressure.'
+    }
+  ] satisfies CertifiedPreviewPoint[]
+};
+
+export const guestExperts: ExpertCredibility[] = [
+  {
+    name: 'Guest Laminator Mentor',
+    role: 'Former hotel pastry trainer',
+    contribution: 'Co-reviews fold and proof checkpoints for commercial croissant batches.'
+  },
+  {
+    name: 'Bakery Operations Advisor',
+    role: 'Multi-site production consultant',
+    contribution: 'Validates workflow maps so methods transfer cleanly across team sizes.'
+  },
+  {
+    name: 'Food Safety Specialist',
+    role: 'HACCP implementation lead',
+    contribution: 'Contributes hold-time and handling standards for cream and custard products.'
   }
 ];
